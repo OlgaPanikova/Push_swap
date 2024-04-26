@@ -6,7 +6,7 @@
 /*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/22 15:08:18 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:20:13 by lelichik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,17 @@ void	push_swap(char *str)
 	a = fill_index(a, array, len);
 	//print_int_array(array, len = ft_size_array(a));
 	print_list(a);
+	printf("BUTTERFLY =\n");
 	butterfly(&a, &b, len);
 	printf("B =\n");
 	print_list(b);
+	printf("A =\n");
+	print_list(a);
+	push_b_in_a(&a, &b, len);
+	//printf("A =\n");
+	//print_list(a);
+	//printf("B =\n");
+	//print_list(b);
  }
 
 int	main(int argc, char **argv)

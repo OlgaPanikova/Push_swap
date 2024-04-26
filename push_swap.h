@@ -6,7 +6,7 @@
 /*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:33:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/22 15:07:58 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:25:59 by lelichik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ int	*sorted_array(int *array, int size);
 t_stack	*fill_index(t_stack *stack, int *tab, int size);
 void	butterfly(t_stack **a, t_stack **b, int i);
 int	ft_range(int i);
+void	push_b_in_a(t_stack **a, t_stack **b, int i);
+int	index_max(t_stack *stack, int i);
+void	ft_rrotate(t_stack **stack);
+void	ft_rotate(t_stack **stack);
+void	ft_swap(t_stack **stack);
+void	print_list(t_stack *stack);
 
 
 #endif
