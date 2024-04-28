@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:22:10 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/22 15:15:21 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:33:49 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ int	ft_check_symbol(char **av)
 				j++;
 			}
 			else
-			{
-				// write(1, "Error\n", 6);
-				// return (1);
 				ft_error();
-			}
 		}
 		i++;
 	}
@@ -44,7 +40,7 @@ int	ft_check_symbol(char **av)
 void	ft_check_argc(int i)
 {
 	if (i <= 1)
-		exit(1);
+		ft_error();
 }
 
 void	ft_error(void)
@@ -71,4 +67,15 @@ void	check_duplicate(int *tab, int size)
 		}
 		i++;
 	}
+}
+int	check_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] && str[i] == ' ')
+		i++;
+	if(str[i] == '\0')
+		return(1);
+	return(0);
 }

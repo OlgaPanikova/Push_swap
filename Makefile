@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = swap_function.c swap_function_2.c push_functions.c check_functions.c optional_function.c array_functions.c butterfly.c
+SRC = swap_function.c swap_function_2.c push_functions.c check_functions.c optional_function.c array_functions.c butterfly.c exceptions.c
 OBJ = $(SRC:.c=.o)
 CC = cc
 RM = rm -f

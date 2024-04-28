@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   butterfly.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:41:07 by lelichik          #+#    #+#             */
-/*   Updated: 2024/04/26 16:29:55 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:52:40 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,13 @@ void	butterfly(t_stack **a, t_stack **b, int i)
 		if((*a)->index <= count)
 		{
 			pb(a, b);
-			printf("CHECK B = \n");
-			print_list(*b);
 			rb(b);
 			count++;
-			printf("CHECK A = \n");
-			print_list(*a);
-			printf("CHECK B = \n");
-			print_list(*b);
 		}
 		else if((*a)->index <= count + n)
 		{
 			pb(a, b);
 			count++;
-			printf("CHECK A = \n");
-			print_list(*a);
-			printf("CHECK B = \n");
-			print_list(*b);
 		}
 		else
 			ra(a);

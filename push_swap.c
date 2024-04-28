@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/26 18:20:13 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:48:51 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,37 @@ t_stack	*fill_list(t_stack *a, char **str)
 	return(a);
 }
 
+void	exceptions(t_stack **a, t_stack **b, int i)
+{
+	int	j;
+
+	j = 0;
+	if(i == 2)
+	{
+		excep_2(a);
+		j++;
+	}
+	else if(i == 3)
+	{
+		excep_3(a);
+		j++;
+	}
+	else if(i == 4)
+	{
+		excep_4(a, b, i);
+		j++;
+	}
+	else if(i == 5)
+	{
+		excep_5(a, b, i);
+		j++;
+	}
+	printf("A =\n");
+	print_list(*a);
+	if(j != 0)
+		exit(0);
+}
+
 void	push_swap(char *str)
 {
 	t_stack	*a;
@@ -83,8 +114,9 @@ void	push_swap(char *str)
 	len = ft_size_array(a);
  	array = fill_array(array, a, len);
 	a = fill_index(a, array, len);
-	//print_int_array(array, len = ft_size_array(a));
+	// print_int_array(array, len = ft_size_array(a));
 	print_list(a);
+	exceptions(&a, &b, len);
 	printf("BUTTERFLY =\n");
 	butterfly(&a, &b, len);
 	printf("B =\n");
@@ -92,10 +124,10 @@ void	push_swap(char *str)
 	printf("A =\n");
 	print_list(a);
 	push_b_in_a(&a, &b, len);
-	//printf("A =\n");
-	//print_list(a);
-	//printf("B =\n");
-	//print_list(b);
+	printf("A =\n");
+	print_list(a);
+	printf("B =\n");
+	print_list(b);
  }
 
 int	main(int argc, char **argv)
@@ -104,10 +136,14 @@ int	main(int argc, char **argv)
 
 	ft_check_argc(argc);
 	argc = 1;
+	if (check_empty(argv[argc]) == 1)
+		ft_error();
 	str = ft_strdup(argv[argc]);
 	argc++;
 	while (argv[argc])
 	{
+		if (check_empty(argv[argc]) == 1)
+		ft_error();
 		str = ds_strjoin(str, argv[argc]);
 		argc++;
 	}
