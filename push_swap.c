@@ -6,35 +6,35 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/28 16:48:51 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:13:32 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	print_string_array(char **argv) {
-    for (int i = 0; argv[i]; i++) {
-        printf("%s\n", argv[i]);
-    }
-}
+// void	print_string_array(char **argv) {
+//     for (int i = 0; argv[i]; i++) {
+//         printf("%s\n", argv[i]);
+//     }
+// }
 
-void print_int_array(int *array, int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%d\n", array[i]);
-    }
-}
+// void print_int_array(int *array, int size) {
+//     for (int i = 0; i < size; i++) {
+//         printf("%d\n", array[i]);
+//     }
+// }
 
-void	print_list(t_stack *stack)
-{
-	t_stack *current = stack;
-	while (current != NULL)
-	{
-		printf("NUM = %d\n", current->num);
-		printf("INDEX = %d\n", current->index);
-		current = current->next;
-	}
-}
+// void	print_list(t_stack *stack)
+// {
+// 	t_stack *current = stack;
+// 	while (current != NULL)
+// 	{
+// 		printf("NUM = %d\n", current->num);
+// 		printf("INDEX = %d\n", current->index);
+// 		current = current->next;
+// 	}
+// }
 
 t_stack	*fill_list(t_stack *a, char **str)
 {
@@ -66,27 +66,14 @@ void	exceptions(t_stack **a, t_stack **b, int i)
 
 	j = 0;
 	if(i == 2)
-	{
-		excep_2(a);
-		j++;
-	}
+		j+= excep_2(a);
+
 	else if(i == 3)
-	{
-		excep_3(a);
-		j++;
-	}
+		j+= excep_3(a);
 	else if(i == 4)
-	{
-		excep_4(a, b, i);
-		j++;
-	}
+		j+= excep_4(a, b, i);
 	else if(i == 5)
-	{
-		excep_5(a, b, i);
-		j++;
-	}
-	printf("A =\n");
-	print_list(*a);
+		j+= excep_5(a, b);
 	if(j != 0)
 		exit(0);
 }
@@ -115,19 +102,19 @@ void	push_swap(char *str)
  	array = fill_array(array, a, len);
 	a = fill_index(a, array, len);
 	// print_int_array(array, len = ft_size_array(a));
-	print_list(a);
+	// print_list(a);
 	exceptions(&a, &b, len);
-	printf("BUTTERFLY =\n");
+	// printf("BUTTERFLY =\n");
 	butterfly(&a, &b, len);
-	printf("B =\n");
-	print_list(b);
-	printf("A =\n");
-	print_list(a);
+	// printf("B =\n");
+	// print_list(b);
+	// printf("A =\n");
+	// print_list(a);
 	push_b_in_a(&a, &b, len);
-	printf("A =\n");
-	print_list(a);
-	printf("B =\n");
-	print_list(b);
+	// printf("A =\n");
+	// print_list(a);
+	// printf("B =\n");
+	// print_list(b);
  }
 
 int	main(int argc, char **argv)

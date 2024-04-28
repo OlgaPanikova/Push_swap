@@ -6,13 +6,13 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 18:41:05 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/28 15:50:15 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:14:52 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	excep_2(t_stack **a)
+int	excep_2(t_stack **a)
 {
 	if(*a == NULL)
 		exit(1);
@@ -20,9 +20,10 @@ void	excep_2(t_stack **a)
 		sa(a);
 	else
 		exit(0);
+	return(1);
 }
 
-void	excep_3(t_stack **a)
+int	excep_3(t_stack **a)
 {
 	t_stack	*tmp;
 
@@ -41,8 +42,10 @@ void	excep_3(t_stack **a)
 		if((*a)->index > (*a)->next->index)
 		sa(a);
 	}
+	return(1);
 }
-void	excep_4(t_stack **a, t_stack **b, int i)
+
+int	excep_4(t_stack **a, t_stack **b, int i)
 {
 	if(*a == NULL)
 		exit(1);
@@ -56,31 +59,33 @@ void	excep_4(t_stack **a, t_stack **b, int i)
 	excep_3(a);
 	pa(a, b);
 	ra(a);
+	return(1);
 }
 
-void	excep_5(t_stack **a, t_stack **b, int i)
+int	excep_5(t_stack **a, t_stack **b)
 {
-	while(((*a)->index != 0))
+	int	j;
+	int	i;
+
+	i = 2;
+	j = 0;
+	while (j != 2)
 	{
-		if(index_min(*a) == 1)
-			ra(a);
-		else rra(a);
+		while ((*a)->index != i - 1)
+		{
+			if (index_max(*a, i) == 1)
+				ra(a);
+			else
+				rra(a);
+		}
+		pb(a, b);
+		i--;
+		j++;
 	}
-	pb(a, b);
-	excep_4(a, b, i);
+	excep_3(a);
+	if ((*b)->index < (*b)->next->index)
+		sb(b);
 	pa(a, b);
-}
-
-int	index_min(t_stack *stack)
-{
-	t_stack *tmp;
-
-	tmp = stack;
-	while(tmp->index != 0)
-	{
-		if(tmp->index == 0)
-			return(1);
-		tmp = tmp->next;
-	}
-	return(0);
+	pa(a, b);
+	return(1);
 }
