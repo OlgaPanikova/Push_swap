@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   optional_function.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:17:28 by lelichik          #+#    #+#             */
-/*   Updated: 2024/04/22 15:17:32 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:27:24 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ds_atoi(char *str)
 	}
 	return (res * sing);
 }
-
 
 char	*ds_strjoin(char *s1, char const *s2)
 {
@@ -79,26 +78,8 @@ t_stack	*ds_lstnew(int num)
 	return (new);
 }
 
-void	ft_lst_free(t_stack **lst, void (*del)(int*))
+void	check_count_node(t_stack **a)
 {
-	t_stack	*current;
-	t_stack	*next;
-
-	if (!lst || !del)
-		return ;
-	current = *lst;
-	while (current)
-	{
-		next = current->next;
-		del(&(current->num));
-		del(&(current->index));
-		free(current);
-		current = next;
-	}
-	*lst = NULL;
-}
-
-void	ft_del(int *i)
-{
-	free(i);
+	if ((*a)->next == NULL)
+		exit(0);
 }

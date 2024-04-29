@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   array_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelichik <lelichik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:21:34 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/22 15:16:40 by lelichik         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:23:13 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_sorted(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
+			return ;
+		i++;
+	}
+	exit(0);
+}
 
 int	*sorted_array(int *array, int size)
 {
@@ -41,11 +55,9 @@ int	*sorted_array(int *array, int size)
 t_stack	*fill_index(t_stack *stack, int *tab, int size)
 {
 	int		i;
-	//int		size;
 	t_stack	*tmp;
 
 	i = 0;
-//	size = ft_size_array(stack);
 	tmp = (t_stack *)malloc(sizeof(t_stack));
 	if (!tmp)
 		ft_error();
@@ -62,17 +74,16 @@ t_stack	*fill_index(t_stack *stack, int *tab, int size)
 	}
 	return (stack);
 }
+
 int	*fill_array(int *tab, t_stack *a, int size)
 {
 	int		i;
-	//int		len;
 	t_stack	*tmp;
 
 	i = 0;
-	//len = ft_size_array(a);
 	tab = (int *)malloc(sizeof(int) * (size + 1));
 	if (!tab)
-		exit(1);
+		ft_error();
 	tmp = a;
 	while (tmp != NULL && i < size)
 	{
@@ -81,6 +92,7 @@ int	*fill_array(int *tab, t_stack *a, int size)
 		tmp = tmp->next;
 	}
 	check_duplicate(tab, size);
+	check_sorted(tab, size);
 	tab = sorted_array(tab, size);
 	return (tab);
 }

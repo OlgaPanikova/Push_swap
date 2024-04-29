@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:33:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/28 17:18:29 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:29:03 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,29 @@ t_stack	*fill_list(t_stack *a, char **str);
 t_stack	*ds_lstnew(int num);
 t_stack	*fill_index(t_stack *stack, int *tab, int size);
 
+int		ds_atoi(char *str);
+int		ft_check_symbol(char **av);
+int		*fill_array(int *tab, t_stack *a, int size);
+int		ft_size_array(t_stack *a);
+int		*sorted_array(int *array, int size);
+int		index_max(t_stack *stack, int i);
+int		ft_range(int i);
+int		check_empty(char *str);
 
-int	ds_atoi(char *str);
-int	ft_check_symbol(char **av);
-int	*fill_array(int *tab, t_stack *a, int size);
-int	ft_size_array(t_stack *a);
-int	*sorted_array(int *array, int size);
-int	index_max(t_stack *stack, int i);
-int	ft_range(int i);
-int	check_empty(char *str);
+int		excep_2(t_stack **a);
+int		excep_3(t_stack **a);
+int		excep_4(t_stack **a, t_stack **b, int i);
+int		excep_5(t_stack **a, t_stack **b);
 
-int	excep_2(t_stack **a);
-int	excep_3(t_stack **a);
-int	excep_4(t_stack **a, t_stack **b, int i);
-int	excep_5(t_stack **a, t_stack **b);
-
+void	check_count_node(t_stack **a);
 void	check_duplicate(int *tab, int size);
 void	ft_check_argc(int i);
 void	ft_error(void);
 void	ft_push(t_stack **from_stack, t_stack **to_stack);
-void	ft_lst_free(t_stack **lst, void (*del)(int*));
-void	ft_del(int *i);
 void	push_swap(char *str);
 void	butterfly(t_stack **a, t_stack **b, int i);
 void	push_b_in_a(t_stack **a, t_stack **b, int i);
+void	check_sorted(int *tab, int size);
 
 void	ra(t_stack **a);
 void	rb(t_stack **b);
@@ -70,5 +69,4 @@ void	ft_swap(t_stack **stack);
 
 char	*ds_strjoin(char *s1, char const *s2);
 
-//void	print_list(t_stack *stack);
 #endif

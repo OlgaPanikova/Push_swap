@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/28 17:13:32 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:02:50 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,19 @@ t_stack	*fill_list(t_stack *a, char **str)
 	i = 0;
 	a = ds_lstnew(ds_atoi(str[i++]));
 	if (!a)
-		exit(1);
+		ft_error();
 	while (str[i])
 	{
 		new_node = ds_lstnew(ds_atoi(str[i]));
 		if (!new_node)
-			exit(1);
+			ft_error();
 		current = a;
 		while (current->next != NULL)
 			current = current->next;
 		current->next = new_node;
 		i++;
 	}
+	check_count_node(&a);
 	return(a);
 }
 
@@ -67,7 +68,6 @@ void	exceptions(t_stack **a, t_stack **b, int i)
 	j = 0;
 	if(i == 2)
 		j+= excep_2(a);
-
 	else if(i == 3)
 		j+= excep_3(a);
 	else if(i == 4)
@@ -91,11 +91,6 @@ void	push_swap(char *str)
 	b = NULL;
 	nums = ft_split(str, ' ');
 	ft_check_symbol(nums);
-	// if(((ft_check_symbol(nums)) == 1))
-	// {
-	// 	free(nums);
-	// 	exit(1);
-	// }
 	a = fill_list(a, nums);
 	free(nums);
 	len = ft_size_array(a);
@@ -111,6 +106,7 @@ void	push_swap(char *str)
 	// printf("A =\n");
 	// print_list(a);
 	push_b_in_a(&a, &b, len);
+	exit(0);
 	// printf("A =\n");
 	// print_list(a);
 	// printf("B =\n");
@@ -135,5 +131,6 @@ int	main(int argc, char **argv)
 		argc++;
 	}
 	push_swap(str);
+	system("leaks push_swap");
 	return (0);
 }

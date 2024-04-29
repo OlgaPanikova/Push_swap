@@ -1,54 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_function_2.c                                  :+:      :+:    :+:   */
+/*   rotate_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 19:51:07 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:29:43 by opanikov         ###   ########.fr       */
+/*   Created: 2024/04/29 17:32:19 by opanikov          #+#    #+#             */
+/*   Updated: 2024/04/29 17:36:15 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rrotate(t_stack **stack)
+void	ft_rotate(t_stack **stack)
 {
+	t_stack	*tmp;
 	t_stack	*last;
-	t_stack	*previous;
 
-	last = *stack;
-	while (last->next != NULL)
-	{
-		previous = last;
-		last = last->next;
-	}
-	last->next = *stack;
+	tmp = *stack;
+	last = (*stack)->next;
+	if (tmp->next == NULL)
+		return ;
+	while ((*stack)->next != NULL)
+		*stack = (*stack)->next;
+	(*stack)->next = tmp;
+	tmp->next = NULL;
 	*stack = last;
-	previous->next = NULL;
 }
 
-void	rra(t_stack **a)
+void	ra(t_stack **a)
 {
-	if (*a == NULL || (*a)->next == NULL)
+	if (a == NULL)
 		exit(1);
-	ft_rrotate(a);
-	write(1, "rra\n", 4);
+	ft_rotate(a);
+	write (1, "ra\n", 3);
 }
 
-void	rrb(t_stack **b)
+void	rb(t_stack **b)
 {
-	if (b == NULL || (*b)->next == NULL)
-		exit(EXIT_FAILURE);
-	ft_rrotate(b);
-	write(1, "rrb\n", 4);
+	if (b == NULL)
+		exit(1);
+	ft_rotate(b);
+	write (1, "rb\n", 3);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b)
 {
 	if (a == NULL || b == NULL)
-		exit(EXIT_FAILURE);
-	ft_rrotate(a);
-	ft_rrotate(b);
-	write(1, "rrr\n", 4);
+		exit(1);
+	ft_rotate(a);
+	ft_rotate(b);
+	write (1, "rr\n", 3);
 }
