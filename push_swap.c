@@ -6,35 +6,11 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:02:50 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:02:07 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-// void	print_string_array(char **argv) {
-//     for (int i = 0; argv[i]; i++) {
-//         printf("%s\n", argv[i]);
-//     }
-// }
-
-// void print_int_array(int *array, int size) {
-//     for (int i = 0; i < size; i++) {
-//         printf("%d\n", array[i]);
-//     }
-// }
-
-// void	print_list(t_stack *stack)
-// {
-// 	t_stack *current = stack;
-// 	while (current != NULL)
-// 	{
-// 		printf("NUM = %d\n", current->num);
-// 		printf("INDEX = %d\n", current->index);
-// 		current = current->next;
-// 	}
-// }
 
 t_stack	*fill_list(t_stack *a, char **str)
 {
@@ -58,7 +34,7 @@ t_stack	*fill_list(t_stack *a, char **str)
 		i++;
 	}
 	check_count_node(&a);
-	return(a);
+	return (a);
 }
 
 void	exceptions(t_stack **a, t_stack **b, int i)
@@ -66,15 +42,15 @@ void	exceptions(t_stack **a, t_stack **b, int i)
 	int	j;
 
 	j = 0;
-	if(i == 2)
-		j+= excep_2(a);
-	else if(i == 3)
-		j+= excep_3(a);
-	else if(i == 4)
-		j+= excep_4(a, b, i);
-	else if(i == 5)
-		j+= excep_5(a, b);
-	if(j != 0)
+	if (i == 2)
+		j += excep_2(a);
+	else if (i == 3)
+		j += excep_3(a);
+	else if (i == 4)
+		j += excep_4(a, b, i);
+	else if (i == 5)
+		j += excep_5(a, b);
+	if (j != 0)
 		exit(0);
 }
 
@@ -85,7 +61,7 @@ void	push_swap(char *str)
 	char	**nums;
 	int		*array;
 	int		len;
-	
+
 	a = NULL;
 	array = NULL;
 	b = NULL;
@@ -94,24 +70,13 @@ void	push_swap(char *str)
 	a = fill_list(a, nums);
 	free(nums);
 	len = ft_size_array(a);
- 	array = fill_array(array, a, len);
+	array = fill_array(array, a, len);
 	a = fill_index(a, array, len);
-	// print_int_array(array, len = ft_size_array(a));
-	// print_list(a);
 	exceptions(&a, &b, len);
-	// printf("BUTTERFLY =\n");
 	butterfly(&a, &b, len);
-	// printf("B =\n");
-	// print_list(b);
-	// printf("A =\n");
-	// print_list(a);
 	push_b_in_a(&a, &b, len);
 	exit(0);
-	// printf("A =\n");
-	// print_list(a);
-	// printf("B =\n");
-	// print_list(b);
- }
+}
 
 int	main(int argc, char **argv)
 {
@@ -126,7 +91,10 @@ int	main(int argc, char **argv)
 	while (argv[argc])
 	{
 		if (check_empty(argv[argc]) == 1)
-		ft_error();
+		{
+			free(str);
+			ft_error();
+		}
 		str = ds_strjoin(str, argv[argc]);
 		argc++;
 	}

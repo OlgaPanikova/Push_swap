@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:41:07 by lelichik          #+#    #+#             */
-/*   Updated: 2024/04/29 17:24:21 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:58:01 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,23 @@ void	butterfly(t_stack **a, t_stack **b, int i)
 	}
 }
 
-int	ft_range(int i)
+int	ft_range(int size)
 {
-	int	j;
+	int	i;
+	int	a;
+	int	b;
 
-	j = 1;
-	while (j * j < i * 2)
-		j++;
-	return (j);
+	i = 1;
+	while (i * i <= size)
+	{
+		if (i * i <= size)
+			a = i;
+		if (i * i * i <= size)
+			b = i;
+		i++;
+	}
+	i = a + b + 1;
+	return (i);
 }
 
 void	push_b_in_a(t_stack **a, t_stack **b, int i)
