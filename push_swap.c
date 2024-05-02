@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 18:02:07 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:23:04 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	exceptions(t_stack **a, t_stack **b, int i)
 	else if (i == 5)
 		j += excep_5(a, b);
 	if (j != 0)
+	{
+		clean_up(a);
 		exit(0);
+	}
 }
 
 void	push_swap(char *str)
@@ -66,15 +69,18 @@ void	push_swap(char *str)
 	array = NULL;
 	b = NULL;
 	nums = ft_split(str, ' ');
+	if (!nums)
+		ft_error();
 	ft_check_symbol(nums);
 	a = fill_list(a, nums);
-	free(nums);
 	len = ft_size_array(a);
 	array = fill_array(array, a, len);
 	a = fill_index(a, array, len);
+	clean_up_array(&array);
 	exceptions(&a, &b, len);
 	butterfly(&a, &b, len);
 	push_b_in_a(&a, &b, len);
+	clean_up(&a);
 	exit(0);
 }
 
@@ -87,6 +93,8 @@ int	main(int argc, char **argv)
 	if (check_empty(argv[argc]) == 1)
 		ft_error();
 	str = ft_strdup(argv[argc]);
+	if (!str)
+		ft_error();
 	argc++;
 	while (argv[argc])
 	{
@@ -99,6 +107,5 @@ int	main(int argc, char **argv)
 		argc++;
 	}
 	push_swap(str);
-	system("leaks push_swap");
 	return (0);
 }

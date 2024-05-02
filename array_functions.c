@@ -6,13 +6,13 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:21:34 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:23:13 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:11:36 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_sorted(int *tab, int size)
+int	check_sorted(int *tab, int size)
 {
 	int	i;
 
@@ -20,10 +20,10 @@ void	check_sorted(int *tab, int size)
 	while (i < size - 1)
 	{
 		if (tab[i] > tab[i + 1])
-			return ;
+			return (0);
 		i++;
 	}
-	exit(0);
+	return (1);
 }
 
 int	*sorted_array(int *array, int size)
@@ -58,9 +58,6 @@ t_stack	*fill_index(t_stack *stack, int *tab, int size)
 	t_stack	*tmp;
 
 	i = 0;
-	tmp = (t_stack *)malloc(sizeof(t_stack));
-	if (!tmp)
-		ft_error();
 	while (i < size)
 	{
 		tmp = stack;
@@ -83,7 +80,10 @@ int	*fill_array(int *tab, t_stack *a, int size)
 	i = 0;
 	tab = (int *)malloc(sizeof(int) * (size + 1));
 	if (!tab)
+	{
+		clean_up(&a);
 		ft_error();
+	}
 	tmp = a;
 	while (tmp != NULL && i < size)
 	{
@@ -91,8 +91,10 @@ int	*fill_array(int *tab, t_stack *a, int size)
 		i++;
 		tmp = tmp->next;
 	}
-	check_duplicate(tab, size);
-	check_sorted(tab, size);
+	if (check_duplicate(tab, size) == 1)
+		ft_error_free(&a, &tab);
+	if (check_sorted(tab, size) == 1)
+		ft_free_sorted(&a, &tab);
 	tab = sorted_array(tab, size);
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:33:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:29:03 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:10:32 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		*sorted_array(int *array, int size);
 int		index_max(t_stack *stack, int i);
 int		ft_range(int i);
 int		check_empty(char *str);
+int		check_duplicate(int *tab, int size);
+int		check_sorted(int *tab, int size);
 
 int		excep_2(t_stack **a);
 int		excep_3(t_stack **a);
@@ -43,14 +45,16 @@ int		excep_4(t_stack **a, t_stack **b, int i);
 int		excep_5(t_stack **a, t_stack **b);
 
 void	check_count_node(t_stack **a);
-void	check_duplicate(int *tab, int size);
 void	ft_check_argc(int i);
 void	ft_error(void);
 void	ft_push(t_stack **from_stack, t_stack **to_stack);
 void	push_swap(char *str);
 void	butterfly(t_stack **a, t_stack **b, int i);
 void	push_b_in_a(t_stack **a, t_stack **b, int i);
-void	check_sorted(int *tab, int size);
+void	clean_up(t_stack **a);
+void	clean_up_array(int **array);
+void	ft_error_free(t_stack **a, int **array);
+void	ft_free_sorted(t_stack **a, int **array);
 
 void	ra(t_stack **a);
 void	rb(t_stack **b);

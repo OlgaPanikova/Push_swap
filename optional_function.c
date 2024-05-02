@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:17:28 by lelichik          #+#    #+#             */
-/*   Updated: 2024/04/29 17:27:24 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:19:05 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@ t_stack	*ds_lstnew(int num)
 void	check_count_node(t_stack **a)
 {
 	if ((*a)->next == NULL)
+	{
+		clean_up(a);
 		exit(0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 18:41:05 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:26:49 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:18:54 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	excep_2(t_stack **a)
 		exit(1);
 	if ((*a)->index > (*a)->next->index)
 		sa(a);
-	else
-		exit(0);
 	return (1);
 }
 

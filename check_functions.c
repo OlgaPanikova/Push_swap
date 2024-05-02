@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:22:10 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:25:32 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:18:30 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int	ft_check_symbol(char **av)
 
 void	ft_check_argc(int i)
 {
-	if (i <= 1)
+	if (i < 1)
 		ft_error();
+	if (i == 1)
+		exit(0);
 }
 
 void	ft_error(void)
@@ -48,7 +50,7 @@ void	ft_error(void)
 	exit(1);
 }
 
-void	check_duplicate(int *tab, int size)
+int	check_duplicate(int *tab, int size)
 {
 	int	i;
 	int	j;
@@ -60,12 +62,13 @@ void	check_duplicate(int *tab, int size)
 		while (j < size)
 		{
 			if (tab[i] == tab[j])
-				ft_error();
+				return (1);
 			else
 				j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	check_empty(char *str)
