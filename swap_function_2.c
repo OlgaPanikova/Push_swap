@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 19:51:07 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 18:03:54 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:50:00 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_rrotate(t_stack **stack)
 void	rra(t_stack **a)
 {
 	if (*a == NULL || (*a)->next == NULL)
-		exit(1);
+		return ;
 	ft_rrotate(a);
 	write(1, "rra\n", 4);
 }
@@ -39,7 +39,7 @@ void	rra(t_stack **a)
 void	rrb(t_stack **b)
 {
 	if (b == NULL || (*b)->next == NULL)
-		exit(EXIT_FAILURE);
+		return ;
 	ft_rrotate(b);
 	write(1, "rrb\n", 4);
 }
@@ -47,7 +47,7 @@ void	rrb(t_stack **b)
 void	rrr(t_stack **a, t_stack **b)
 {
 	if (a == NULL || b == NULL)
-		exit(EXIT_FAILURE);
+		return ;
 	ft_rrotate(a);
 	ft_rrotate(b);
 	write(1, "rrr\n", 4);

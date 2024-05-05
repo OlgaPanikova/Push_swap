@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:38:52 by opanikov          #+#    #+#             */
-/*   Updated: 2024/05/02 18:23:04 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:37:19 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ t_stack	*fill_list(t_stack *a, char **str)
 	{
 		new_node = ds_lstnew(ds_atoi(str[i]));
 		if (!new_node)
+		{
+			free_char_array(str);
 			ft_error();
+		}
 		current = a;
 		while (current->next != NULL)
 			current = current->next;
@@ -73,6 +76,7 @@ void	push_swap(char *str)
 		ft_error();
 	ft_check_symbol(nums);
 	a = fill_list(a, nums);
+	free_char_array(nums);
 	len = ft_size_array(a);
 	array = fill_array(array, a, len);
 	a = fill_index(a, array, len);
@@ -107,5 +111,6 @@ int	main(int argc, char **argv)
 		argc++;
 	}
 	push_swap(str);
+	free(str);
 	return (0);
 }

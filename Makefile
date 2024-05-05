@@ -3,7 +3,7 @@ SRC = array_functions.c butterfly.c check_functions.c exceptions.c optional_func
 OBJ = $(SRC:.c=.o)
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 LIBFT = ./libft
 LIBFTA = $(LIBFT)/libft.a
 LIBS = -L$(LIBFT) -lft

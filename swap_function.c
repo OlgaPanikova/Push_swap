@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 18:30:38 by opanikov          #+#    #+#             */
-/*   Updated: 2024/04/29 18:04:01 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:50:13 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_swap(t_stack **stack)
 void	sa(t_stack **a)
 {
 	if (a == NULL && (*a)->next == NULL)
-		exit(1);
+		return ;
 	ft_swap(a);
 	write (1, "sa\n", 3);
 }
@@ -38,7 +38,7 @@ void	sa(t_stack **a)
 void	sb(t_stack **b)
 {
 	if (b == NULL && (*b)->next == NULL)
-		exit(1);
+		return ;
 	ft_swap(b);
 	write (1, "sb\n", 3);
 }
@@ -46,7 +46,7 @@ void	sb(t_stack **b)
 void	ss(t_stack **a, t_stack **b)
 {
 	if (a == NULL || b == NULL)
-		exit(EXIT_FAILURE);
+		return ;
 	ft_swap(a);
 	ft_swap(b);
 	write (1, "ss\n", 3);

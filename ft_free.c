@@ -6,7 +6,7 @@
 /*   By: opanikov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:53:31 by opanikov          #+#    #+#             */
-/*   Updated: 2024/05/02 18:28:47 by opanikov         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:29:53 by opanikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ void	ft_free_sorted(t_stack **a, int **array)
 	clean_up(a);
 	clean_up_array(array);
 	exit(0);
+}
+
+void	free_char_array(char **nums)
+{
+	int	i;
+
+	i = 0;
+	while (nums[i])
+	{
+		free(nums[i]);
+		i++;
+	}
+	free(nums);
 }
